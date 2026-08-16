@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classified Tattoo Supply | Riverside, CA</title>
-    <!-- Google Fonts: UnifrakturMaguntia, Rye, Inter -->
+    <!-- Google Fonts: Rye & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Rye&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Custom Font Declaration for Cloister Black */
+        @font-face {
+            font-family: 'Cloister Black';
+            src: local('Cloister Black'), 
+                 local('CloisterBlack'), 
+                 url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/CloisterBlack.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         :root {
             --bg-dark: #0a0a0c;
             --bg-card: #141418;
@@ -18,7 +28,7 @@
             --text-main: #ffffff;
             --text-muted: #a0a0ab;
             --border-color: #22222a;
-            --font-oldenglish: 'UnifrakturMaguntia', cursive; /* Matches image exact style */
+            --font-cloister: 'Cloister Black', 'Old English Text MT', 'CloisterBlack', cursive;
             --font-serif: 'Rye', serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -84,8 +94,8 @@
         }
 
         .logo {
-            font-family: var(--font-oldenglish);
-            font-size: 2.6rem;
+            font-family: var(--font-cloister);
+            font-size: 2.8rem;
             color: var(--text-main);
             text-decoration: none;
             letter-spacing: 1px;
@@ -181,8 +191,8 @@
         }
 
         .hero h1 {
-            font-family: var(--font-oldenglish);
-            font-size: 5rem;
+            font-family: var(--font-cloister);
+            font-size: 5.2rem;
             color: var(--accent-red);
             line-height: 1;
             margin-bottom: 15px;
@@ -225,8 +235,8 @@
         }
 
         .section-title {
-            font-family: var(--font-oldenglish);
-            font-size: 3.4rem;
+            font-family: var(--font-cloister);
+            font-size: 3.6rem;
             letter-spacing: 1px;
             color: var(--text-main);
             margin-bottom: 25px;
@@ -346,10 +356,115 @@
             color: white;
         }
 
-        /* Store Hours & Contact Section */
-        .info-bar {
+        /* Testimonials Section */
+        .testimonials-section {
             background: #0e0e12;
             border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 60px 5%;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .testimonials-header h3 {
+            font-family: var(--font-cloister);
+            font-size: 3.2rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .badge-experience {
+            display: inline-block;
+            background: rgba(200, 16, 46, 0.15);
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-red);
+        }
+
+        .testimonial-stars {
+            color: #f59e0b;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-quote {
+            color: #d1d1d6;
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .author-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #1f1f26;
+            border: 1px solid var(--accent-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent-red);
+        }
+
+        .author-info h5 {
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .author-info span {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Store Hours & Contact Section */
+        .info-bar {
+            background: #08080a;
             border-bottom: 1px solid var(--border-color);
             padding: 35px 5%;
             display: grid;
@@ -361,8 +476,8 @@
         .info-item h4 {
             color: var(--accent-red);
             margin-bottom: 5px;
-            font-size: 2rem;
-            font-family: var(--font-oldenglish);
+            font-size: 2.2rem;
+            font-family: var(--font-cloister);
             letter-spacing: 1px;
         }
 
@@ -392,8 +507,8 @@
         .footer-col h4 {
             color: var(--text-main);
             margin-bottom: 15px;
-            font-family: var(--font-oldenglish);
-            font-size: 1.8rem;
+            font-family: var(--font-cloister);
+            font-size: 2rem;
             letter-spacing: 1px;
         }
 
@@ -495,7 +610,7 @@
             <li><a href="#ink">Tattoo Inks</a></li>
             <li><a href="#prep">Prep Products</a></li>
             <li><a href="#aftercare">Aftercare</a></li>
-            <li><a href="#sanitation">Sanitation</a></li>
+            <li><a href="#reviews">Artist Reviews</a></li>
             <li><a href="#hours">Shop Hours</a></li>
         </ul>
     </header>
@@ -541,9 +656,9 @@
                 <div class="cat-icon">🧴</div>
                 <span>Sanitation</span>
             </a>
-            <a href="#hours" class="cat-card">
-                <div class="cat-icon">⏰</div>
-                <span>Shop Hours</span>
+            <a href="#reviews" class="cat-card">
+                <div class="cat-icon">⭐</div>
+                <span>Reviews</span>
             </a>
         </div>
     </section>
@@ -555,7 +670,6 @@
         </div>
 
         <div class="product-grid">
-            <!-- Product 1: Tattoo Machine -->
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?q=80&w=600&auto=format&fit=crop" alt="Rotary Tattoo Machine" class="product-img">
                 <div>
@@ -566,7 +680,6 @@
                 <button class="btn-add-cart" onclick="showToast('Pro Wireless Rotary Pen Machine added to cart!')">Add to Cart</button>
             </div>
 
-            <!-- Product 2: Needles -->
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?q=80&w=600&auto=format&fit=crop" alt="Needle Cartridges" class="product-img">
                 <div>
@@ -577,7 +690,6 @@
                 <button class="btn-add-cart" onclick="showToast('Pro Round Liner Cartridges added to cart!')">Add to Cart</button>
             </div>
 
-            <!-- Product 3: Ink -->
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?q=80&w=600&auto=format&fit=crop" alt="Tattoo Ink" class="product-img">
                 <div>
@@ -588,7 +700,6 @@
                 <button class="btn-add-cart" onclick="showToast('Dynamic Outlining Black Ink added to cart!')">Add to Cart</button>
             </div>
 
-            <!-- Product 4: Aftercare -->
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=600&auto=format&fit=crop" alt="Tattoo Aftercare" class="product-img">
                 <div>
@@ -597,6 +708,59 @@
                     <div class="product-price">$18.50</div>
                 </div>
                 <button class="btn-add-cart" onclick="showToast('Tattoo Butter & Glide added to cart!')">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & Business Longevity Section -->
+    <section class="testimonials-section" id="reviews">
+        <div class="testimonials-header">
+            <div class="badge-experience">★ Serving Inland Empire Artists Since 2018 ★</div>
+            <h3>Trusted By Local Artists</h3>
+            <p>Over 8 years of providing Riverside and IE tattoo artists with top-tier equipment, reliable walk-in inventory, and fair pricing.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Classified is my go-to shop in Riverside. Always stocked on Dynamic black ink and round liners when I need them urgently before a big session."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MA</div>
+                    <div class="author-info">
+                        <h5>Marcus A.</h5>
+                        <span>Tattoo Artist • Riverside, CA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Best supply shop in the IE! Fair prices, quality cartridges that don't split, and the owners actually care about the local artist community."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JR</div>
+                    <div class="author-info">
+                        <h5>Julian R.</h5>
+                        <span>Studio Owner • Corona, CA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Super convenient location on Magnolia. Walk-ins for supplies are super quick and effortless. Never buying online and waiting for shipping again."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SV</div>
+                    <div class="author-info">
+                        <h5>Sofia V.</h5>
+                        <span>Resident Artist • Moreno Valley, CA</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -638,6 +802,7 @@
                 <ul>
                     <li><a href="#">Store Location</a></li>
                     <li><a href="#">Shop Hours</a></li>
+                    <li><a href="#reviews">Artist Reviews</a></li>
                     <li><a href="#">Contact Support</a></li>
                 </ul>
             </div>
