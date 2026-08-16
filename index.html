@@ -4,375 +4,609 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classified Tattoo Supply | Riverside, CA</title>
+    <!-- Google Fonts for Gothic Header Style and Clean Body Text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS RESET & VARIABLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: #141418;
+            --bg-input: #1f1f26;
+            --accent-red: #c8102e;
+            --accent-red-hover: #9e0c23;
+            --text-main: #ffffff;
+            --text-muted: #a0a0ab;
+            --border-color: #22222a;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
         }
 
-        :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --accent-gold: #d4af37;
-            --text-light: #f5f5f5;
-            --text-muted: #aaa;
-            --border-color: #333;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-light);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.5;
         }
 
-        /* NAVIGATION */
-        nav {
+        /* Top Announcement Bar */
+        .top-bar {
+            background: #111115;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding: 8px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 8%;
-            background: rgba(18, 18, 18, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
             border-bottom: 1px solid var(--border-color);
         }
 
+        .top-bar .highlight {
+            color: var(--accent-red);
+            font-weight: 700;
+        }
+
+        /* Demo Notice Banner */
+        .demo-bar {
+            background: var(--accent-red);
+            color: #ffffff;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Navigation Bar */
+        header {
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 5%;
+            gap: 20px;
+        }
+
         .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--text-light);
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            color: var(--text-main);
+            text-decoration: none;
         }
 
         .logo span {
-            color: var(--accent-gold);
+            color: var(--accent-red);
         }
 
-        .nav-links {
+        .search-container {
+            flex: 1;
+            max-width: 550px;
             display: flex;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px 16px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 4px 0 0 4px;
+            color: white;
+            outline: none;
+        }
+
+        .search-container button {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Mega Nav Categories Bar */
+        .nav-categories {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
             list-style: none;
-            gap: 2rem;
+            padding: 12px 5%;
+            background: #0e0e12;
+            border-top: 1px solid var(--border-color);
+            overflow-x: auto;
         }
 
-        .nav-links a {
-            color: var(--text-light);
+        .nav-categories a {
+            color: var(--text-main);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-gold);
+        .nav-categories a:hover {
+            color: var(--accent-red);
         }
 
-        /* HERO SECTION */
+        /* Hero Banner */
         .hero {
-            padding: 6rem 8% 4rem;
+            background: linear-gradient(180deg, rgba(200, 16, 46, 0.15) 0%, rgba(10, 10, 12, 1) 100%), #141418;
+            padding: 60px 5%;
             text-align: center;
-            background: linear-gradient(180deg, rgba(18, 18, 18, 0.7) 0%, var(--bg-color) 100%), 
-                        radial-gradient(circle, rgba(212,175,55,0.1) 0%, rgba(0,0,0,0) 70%);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
         }
 
         .hero p {
-            font-size: 1.2rem;
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            max-width: 650px;
+            margin: 0 auto 25px;
         }
 
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
+        .btn-red {
+            background: var(--accent-red);
+            color: white;
+            padding: 12px 30px;
+            border: none;
             border-radius: 4px;
-            font-weight: 600;
-            text-decoration: none;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .btn-primary {
-            background-color: var(--accent-gold);
-            color: #000;
+        .btn-red:hover {
+            background: var(--accent-red-hover);
         }
 
-        .btn-primary:hover {
-            background-color: #b89628;
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--accent-gold);
-            color: #000;
-        }
-
-        /* SECTIONS GENERAL */
-        section {
-            padding: 4rem 8%;
+        /* Section Wrappers */
+        .section {
+            padding: 50px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2rem;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 2.5rem;
-            position: relative;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-gold);
-            margin: 0.5rem auto 0;
-        }
-
-        /* PRODUCTS GRID */
-        .grid {
+        /* Category Grid Styling (Instagram Highlights Style) */
+        .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
         }
 
-        .card {
-            background: var(--card-bg);
+        .cat-card {
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 6px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-        }
-
-        /* REVIEWS SECTION */
-        .rating-summary {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .rating-num {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--accent-gold);
-        }
-
-        .stars {
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .review-card {
-            background: var(--card-bg);
-            border-left: 3px solid var(--accent-gold);
-            padding: 1.5rem;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .review-card p {
-            font-style: italic;
-            margin-bottom: 1rem;
-            color: #ddd;
-        }
-
-        .review-author {
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* INFO & HOURS SECTION */
-        .info-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            background: var(--card-bg);
-            padding: 2.5rem;
             border-radius: 8px;
-            border: 1px solid var(--border-color);
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .info-block h3 {
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
+        .cat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-red);
+        }
+
+        .cat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #1f1f26;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--accent-red);
+            color: var(--accent-red);
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 0 10px rgba(200, 16, 46, 0.3);
+        }
+
+        .cat-card span {
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        /* Product Cards Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            background: #1c1c24;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 12px;
+            border: 1px dashed #333340;
+        }
+
+        .product-tag {
+            color: var(--accent-red);
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
         }
 
-        .hours-list {
+        .product-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 4px 0 8px;
+        }
+
+        .product-price {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            padding: 8px;
+            background: transparent;
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        /* Store Hours & Contact Section */
+        .info-bar {
+            background: #0e0e12;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 30px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .info-item h4 {
+            color: var(--accent-red);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            font-family: var(--font-heading);
+        }
+
+        .info-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #08080a;
+            padding: 50px 5% 20px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
             list-style: none;
         }
 
-        .hours-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.4rem 0;
-            border-bottom: 1px solid #2a2a2a;
+        .footer-col ul li {
+            margin-bottom: 8px;
         }
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: #0a0a0a;
-            border-top: 1px solid var(--border-color);
+        .footer-col ul li a {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            text-decoration: none;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
+        .footer-col ul li a:hover {
+            color: var(--accent-red);
         }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Cart Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background: #1f1f26;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 12px;
+            position: fixed;
+            z-index: 2000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            border: 1px solid var(--accent-red);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="logo">Classified <span>Tattoo Supply</span></div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#contact">Hours & Location</a></li>
-        </ul>
-    </nav>
+    <!-- Demo Banner for Pitching -->
+    <div class="demo-bar">
+        ⚡ DEMO PREVIEW — Custom Designed for Classified Tattoo Supply
+    </div>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <h1>Inland Empire's Trusted Tattoo Supply</h1>
-        <p>Premium equipment, inks, needles, and medical supplies for beginner and veteran artists in Riverside, CA.</p>
-        <div class="btn-group">
-            <a href="https://classified-tattoo-supply-riverside.square.site" target="_blank" class="btn btn-primary">Order Online</a>
-            <a href="tel:9513869328" class="btn btn-secondary">Call Shop</a>
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div>📍 <span class="highlight">Riverside, CA</span> | 9412 Magnolia Ave</div>
+        <div>📞 Call Us: <span class="highlight">(951) 386-9328</span></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-main">
+            <a href="#" class="logo">Classified <span>Tattoo</span> Supply</a>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Search needles, inks, aftercare, stencil prep...">
+                <button>Search</button>
+            </div>
+
+            <div class="header-actions">
+                <div>👤 Account</div>
+                <div>🛒 Cart (0)</div>
+            </div>
         </div>
+
+        <!-- Navigation Categories -->
+        <ul class="nav-categories">
+            <li><a href="#needles">Needles & Cartridges</a></li>
+            <li><a href="#ink">Tattoo Inks</a></li>
+            <li><a href="#prep">Prep Products</a></li>
+            <li><a href="#aftercare">Aftercare</a></li>
+            <li><a href="#sanitation">Sanitation</a></li>
+            <li><a href="#hours">Shop Hours</a></li>
+        </ul>
     </header>
 
-    <!-- PRODUCTS SECTION -->
-    <section id="products">
-        <h2 class="section-title">Supplies & Equipment</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Premium Inks</h3>
-                <p>Wide selection of industry standards, including Eternal Ink, Dynamic Blacks & Greys, and bright colors.</p>
-            </div>
-            <div class="card">
-                <h3>Needles & Cartridges</h3>
-                <p>Full variety of safety cartridges, traditional needles, and liners for precise work.</p>
-            </div>
-            <div class="card">
-                <h3>Tattoo Machines</h3>
-                <p>Rotary and coil machines suitable for both apprentices learning the trade and seasoned pros.</p>
-            </div>
-            <div class="card">
-                <h3>Shop Essentials</h3>
-                <p>Green soap, squirt bottles, stencil paper, gloves, and complete sanitary setup supplies.</p>
-            </div>
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h1>Quality Tattoo Supplies</h1>
+        <p>Serving professional artists across Riverside. Premium cartridges, rich black inks, stencil preps, and shop supplies.</p>
+        <a href="#categories" class="btn-red">Shop Inventory</a>
+    </section>
+
+    <!-- Category Highlights Section -->
+    <section class="section" id="categories">
+        <div class="section-title">
+            <span>Shop By Category</span>
+        </div>
+
+        <div class="category-grid">
+            <a href="#products" class="cat-card">
+                <div class="cat-icon">💉</div>
+                <span>Needles</span>
+            </a>
+            <a href="#products" class="cat-card">
+                <div class="cat-icon">🎨</div>
+                <span>Ink & Sets</span>
+            </a>
+            <a href="#products" class="cat-card">
+                <div class="cat-icon">🧼</div>
+                <span>Prep Products</span>
+            </a>
+            <a href="#products" class="cat-card">
+                <div class="cat-icon">🩹</div>
+                <span>Aftercare</span>
+            </a>
+            <a href="#products" class="cat-card">
+                <div class="cat-icon">🧴</div>
+                <span>Sanitation</span>
+            </a>
+            <a href="#hours" class="cat-card">
+                <div class="cat-icon">⏰</div>
+                <span>Shop Hours</span>
+            </a>
         </div>
     </section>
 
-    <!-- REVIEWS SECTION -->
-    <section id="reviews">
-        <h2 class="section-title">Artist Feedback</h2>
-        <div class="rating-summary">
-            <div class="rating-num">4.4</div>
-            <div class="stars">★★★★☆</div>
-            <p style="color: var(--text-muted); margin-top: 0.5rem;">Based on 115+ Google Reviews</p>
+    <!-- Featured Products Section -->
+    <section class="section" id="products">
+        <div class="section-title">
+            <span>Featured Inventory</span>
         </div>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <p>"Hands down the best spot! Jerry is 💯 legit. Always on point and have all of the best tattoo supplies and knowledge of what is the best on the market."</p>
-                <div class="review-author">- Alfred Ruiz</div>
-            </div>
-            <div class="review-card">
-                <p>"Love this place. Whenever I come in they always got what I need. They are knowledgeable about any tattoo-related questions and share their experience."</p>
-                <div class="review-author">- Justin Case</div>
-            </div>
-            <div class="review-card">
-                <p>"An amazing shop for beginners to seasoned veterans of the tattoo game. They offer a wide selection of Eternal Ink and Dynamic for blacks & greys."</p>
-                <div class="review-author">- Andrew</div>
-            </div>
-        </div>
-    </section>
 
-    <!-- HOURS & LOCATION SECTION -->
-    <section id="contact">
-        <h2 class="section-title">Visit the Shop</h2>
-        <div class="info-container">
-            <div class="info-block">
-                <h3>Store Info</h3>
-                <p><strong>Address:</strong><br>9412 Magnolia Ave<br>Riverside, CA 92503</p>
-                <br>
-                <p><strong>Phone:</strong><br><a href="tel:9513869328" style="color: var(--accent-gold); text-decoration: none;">(951) 386-9328</a></p>
-                <br>
-                <div class="btn-group" style="justify-content: flex-start;">
-                    <a href="https://maps.google.com/?q=9412+Magnolia+Ave,+Riverside,+CA+92503" target="_blank" class="btn btn-primary">Get Directions</a>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img">[ Needle Image ]</div>
+                <div>
+                    <div class="product-tag">Needles</div>
+                    <div class="product-title">Pro Round Liner Cartridges (Box of 20)</div>
+                    <div class="product-price">$32.00</div>
                 </div>
+                <button class="btn-add-cart" onclick="showToast('Pro Round Liner Cartridges added to cart!')">Add to Cart</button>
             </div>
-            <div class="info-block">
-                <h3>Hours of Operation</h3>
-                <ul class="hours-list">
-                    <li><span>Monday</span> <span>11:00 AM – 5:00 PM</span></li>
-                    <li><span>Tuesday</span> <span>11:00 AM – 5:00 PM</span></li>
-                    <li><span>Wednesday</span> <span>11:00 AM – 5:00 PM</span></li>
-                    <li><span>Thursday</span> <span>11:00 AM – 5:00 PM</span></li>
-                    <li><span>Friday</span> <span>11:00 AM – 5:00 PM</span></li>
-                    <li><span>Saturday</span> <span>11:00 AM – 3:00 PM</span></li>
-                    <li><span>Sunday</span> <span style="color: #ff5555;">Closed</span></li>
+
+            <div class="product-card">
+                <div class="product-img">[ Ink Bottle Image ]</div>
+                <div>
+                    <div class="product-tag">Tattoo Inks</div>
+                    <div class="product-title">Dynamic Outlining Black Ink (8oz)</div>
+                    <div class="product-price">$24.99</div>
+                </div>
+                <button class="btn-add-cart" onclick="showToast('Dynamic Outlining Black Ink added to cart!')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">[ Butter/Glide Image ]</div>
+                <div>
+                    <div class="product-tag">Aftercare</div>
+                    <div class="product-title">Tattoo Butter & Glide (8oz)</div>
+                    <div class="product-price">$18.50</div>
+                </div>
+                <button class="btn-add-cart" onclick="showToast('Tattoo Butter & Glide added to cart!')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">[ Stencil Prep Image ]</div>
+                <div>
+                    <div class="product-tag">Prep Products</div>
+                    <div class="product-title">Premium Stencil Transfer Solution</div>
+                    <div class="product-price">$16.00</div>
+                </div>
+                <button class="btn-add-cart" onclick="showToast('Stencil Transfer Solution added to cart!')">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Info & Hours Bar -->
+    <section class="info-bar" id="hours">
+        <div class="info-item">
+            <h4>📍 Store Location</h4>
+            <p>9412 Magnolia Ave<br>Riverside, CA 92503</p>
+        </div>
+        <div class="info-item">
+            <h4>⏰ Shop Hours</h4>
+            <p>Mon–Fri: 11:00 AM – 5:00 PM<br>Saturday: 11:00 AM – 3:00 PM</p>
+        </div>
+        <div class="info-item">
+            <h4>📞 Direct Contact</h4>
+            <p>(951) 386-9328<br>Local Walk-Ins Welcome</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Classified Tattoo Supply</h4>
+                <p>Providing tattoo artists in Riverside with top-tier equipment, needles, inks, and sanitation gear.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Needles & Cartridges</a></li>
+                    <li><a href="#">Inks</a></li>
+                    <li><a href="#">Prep Products</a></li>
+                    <li><a href="#">Aftercare</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="#">Store Location</a></li>
+                    <li><a href="#">Shop Hours</a></li>
+                    <li><a href="#">Contact Support</a></li>
                 </ul>
             </div>
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; Classified Tattoo Supply. All rights reserved.</p>
-        <p>Serving Riverside, CA & the Inland Empire</p>
+        <div class="footer-bottom">
+            &copy; 2026 Classified Tattoo Supply. Built for local artists.
+        </div>
     </footer>
 
+    <!-- Interactive Toast -->
+    <div id="toast">Item added to cart!</div>
+
+    <script>
+        function showToast(message) {
+            var toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+    </script>
 </body>
 </html>
