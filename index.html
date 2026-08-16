@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classified Tattoo Supply | Riverside, CA</title>
-    <!-- Google Fonts: Rye & Inter -->
+    <!-- Google Fonts: Pirata One (Old English Style), Rye & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Rye&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom Font Declaration for Cloister Black */
-        @font-face {
-            font-family: 'Cloister Black';
-            src: local('Cloister Black'), 
-                 local('CloisterBlack'), 
-                 url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/CloisterBlack.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
         :root {
             --bg-dark: #0a0a0c;
             --bg-card: #141418;
@@ -28,7 +18,7 @@
             --text-main: #ffffff;
             --text-muted: #a0a0ab;
             --border-color: #22222a;
-            --font-cloister: 'Cloister Black', 'Old English Text MT', 'CloisterBlack', cursive;
+            --font-cloister: 'Pirata One', cursive, serif;
             --font-serif: 'Rye', serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -66,16 +56,6 @@
             letter-spacing: 0.5px;
         }
 
-        .demo-bar {
-            background: var(--accent-red);
-            color: #ffffff;
-            text-align: center;
-            padding: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
         /* Header */
         header {
             background-color: var(--bg-dark);
@@ -95,7 +75,7 @@
 
         .logo {
             font-family: var(--font-cloister);
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             color: var(--text-main);
             text-decoration: none;
             letter-spacing: 1px;
@@ -192,7 +172,7 @@
 
         .hero h1 {
             font-family: var(--font-cloister);
-            font-size: 5.2rem;
+            font-size: 5.5rem;
             color: var(--accent-red);
             line-height: 1;
             margin-bottom: 15px;
@@ -236,7 +216,7 @@
 
         .section-title {
             font-family: var(--font-cloister);
-            font-size: 3.6rem;
+            font-size: 3.8rem;
             letter-spacing: 1px;
             color: var(--text-main);
             margin-bottom: 25px;
@@ -289,10 +269,10 @@
             display: block;
         }
 
-        /* Product Cards Grid */
+        /* Product Cards Grid (6 Items: 3 & 3 Layout) */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -356,7 +336,7 @@
             color: white;
         }
 
-        /* Testimonials Section */
+        /* Testimonials Section (6 Reviews: 3 & 3 Layout) */
         .testimonials-section {
             background: #0e0e12;
             border-top: 1px solid var(--border-color);
@@ -372,7 +352,7 @@
 
         .testimonials-header h3 {
             font-family: var(--font-cloister);
-            font-size: 3.2rem;
+            font-size: 3.6rem;
             color: var(--text-main);
             margin-bottom: 8px;
         }
@@ -404,7 +384,6 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 25px;
-            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -462,7 +441,7 @@
             font-size: 0.8rem;
         }
 
-        /* Store Hours & Contact Section */
+        /* Store Hours Bar */
         .info-bar {
             background: #08080a;
             border-bottom: 1px solid var(--border-color);
@@ -476,7 +455,7 @@
         .info-item h4 {
             color: var(--accent-red);
             margin-bottom: 5px;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-family: var(--font-cloister);
             letter-spacing: 1px;
         }
@@ -508,7 +487,7 @@
             color: var(--text-main);
             margin-bottom: 15px;
             font-family: var(--font-cloister);
-            font-size: 2rem;
+            font-size: 2.2rem;
             letter-spacing: 1px;
         }
 
@@ -558,7 +537,7 @@
             animation: fadein 0.5s, fadeout 0.5s 2.5s;
         }
 
-        /* Keyframe Animations */
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -575,11 +554,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Demo Banner -->
-    <div class="demo-bar">
-        ⚡ DEMO PREVIEW — Custom Designed for Classified Tattoo Supply
-    </div>
 
     <!-- Top Info Bar -->
     <div class="top-bar">
@@ -603,7 +577,7 @@
             </div>
         </div>
 
-        <!-- Navigation Categories -->
+        <!-- Navigation Links -->
         <ul class="nav-categories">
             <li><a href="#machines">Tattoo Machines</a></li>
             <li><a href="#needles">Needles & Cartridges</a></li>
@@ -615,13 +589,13 @@
         </ul>
     </header>
 
-    <!-- Animated Hero Banner -->
+    <!-- Hero Banner -->
     <section class="hero">
         <div class="hero-content">
             <h2>Quality Supplies & Great Prices</h2>
             <h1>Shop Open Hours</h1>
             <p>Serving professional artists across Riverside. Premium cartridges, rotary machines, rich black inks, and shop supplies.</p>
-            <a href="#categories" class="btn-red">Shop Inventory</a>
+            <a href="#products" class="btn-red">Shop Inventory</a>
         </div>
     </section>
 
@@ -663,7 +637,7 @@
         </div>
     </section>
 
-    <!-- Featured Products Section -->
+    <!-- FEATURED INVENTORY SECTION -->
     <section class="section" id="products">
         <div class="section-title">
             <span>Featured Inventory</span>
@@ -709,15 +683,35 @@
                 </div>
                 <button class="btn-add-cart" onclick="showToast('Tattoo Butter & Glide added to cart!')">Add to Cart</button>
             </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop" alt="Medical Sanitation" class="product-img">
+                <div>
+                    <div class="product-tag">Sanitation</div>
+                    <div class="product-title">Black Nitrile Gloves (Box of 100)</div>
+                    <div class="product-price">$15.99</div>
+                </div>
+                <button class="btn-add-cart" onclick="showToast('Black Nitrile Gloves added to cart!')">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=600&auto=format&fit=crop" alt="Stencil Products" class="product-img">
+                <div>
+                    <div class="product-tag">Prep Products</div>
+                    <div class="product-title">Professional Stencil Transfer Gel (8oz)</div>
+                    <div class="product-price">$21.50</div>
+                </div>
+                <button class="btn-add-cart" onclick="showToast('Professional Stencil Gel added to cart!')">Add to Cart</button>
+            </div>
         </div>
     </section>
 
-    <!-- Testimonials & Business Longevity Section -->
+    <!-- CUSTOMER TESTIMONIALS SECTION -->
     <section class="testimonials-section" id="reviews">
         <div class="testimonials-header">
             <div class="badge-experience">★ Serving Inland Empire Artists Since 2018 ★</div>
             <h3>Trusted By Local Artists</h3>
-            <p>Over 8 years of providing Riverside and IE tattoo artists with top-tier equipment, reliable walk-in inventory, and fair pricing.</p>
+            <p>8 years of providing Riverside tattoo artists with top-tier equipment, reliable walk-in stock, and fair pricing.</p>
         </div>
 
         <div class="testimonials-grid">
@@ -762,10 +756,52 @@
                     </div>
                 </div>
             </div>
+
+            <div class="testimonial-card">
+                <div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Their stencil gel and glide products are unmatched. Honest staff who always give great recommendations on new rotary pens."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">DL</div>
+                    <div class="author-info">
+                        <h5>Daniel L.</h5>
+                        <span>Tattoo Artist • Riverside, CA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Saved my studio multiple times when we ran low on medical supplies and gloves mid-week. Always reliable and always in stock."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ER</div>
+                    <div class="author-info">
+                        <h5>Elena R.</h5>
+                        <span>Shop Manager • Jurupa Valley, CA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Top quality gear at real wholesale prices. The 8+ years they've been serving the Inland Empire shows in how they treat local artists."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">KG</div>
+                    <div class="author-info">
+                        <h5>Kevin G.</h5>
+                        <span>Tattoo Artist • San Bernardino, CA</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Store Info & Hours Bar -->
+    <!-- Store Hours Bar -->
     <section class="info-bar" id="hours">
         <div class="info-item">
             <h4>Store Location</h4>
