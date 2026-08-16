@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classified Tattoo Supply | Riverside, CA</title>
-    <!-- Google Fonts: Pirata One (Old English Style), Rye & Inter -->
+    <!-- Google Fonts: Pirata One, Rye & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Rye&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 900;
         }
 
         .header-main {
@@ -80,6 +80,7 @@
             text-decoration: none;
             letter-spacing: 1px;
             line-height: 1;
+            cursor: pointer;
         }
 
         .logo span {
@@ -119,6 +120,26 @@
             color: var(--text-muted);
         }
 
+        .cart-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cart-badge {
+            background: var(--accent-red);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
         /* Nav Links */
         .nav-categories {
             display: flex;
@@ -131,18 +152,21 @@
             overflow-x: auto;
         }
 
-        .nav-categories a {
+        .nav-categories button {
+            background: none;
+            border: none;
             color: var(--text-main);
-            text-decoration: none;
             font-size: 0.88rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             white-space: nowrap;
+            cursor: pointer;
             transition: color 0.2s;
         }
 
-        .nav-categories a:hover {
+        .nav-categories button:hover,
+        .nav-categories button.active {
             color: var(--accent-red);
         }
 
@@ -154,11 +178,6 @@
             padding: 90px 5%;
             text-align: center;
             border-bottom: 1px solid var(--border-color);
-            overflow: hidden;
-        }
-
-        .hero-content {
-            animation: fadeInUp 1.2s ease-out forwards;
         }
 
         .hero h2 {
@@ -238,8 +257,8 @@
             border-radius: 8px;
             padding: 20px;
             text-align: center;
-            text-decoration: none;
             color: var(--text-main);
+            cursor: pointer;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
@@ -269,7 +288,7 @@
             display: block;
         }
 
-        /* Product Cards Grid (6 Items: 3 & 3 Layout) */
+        /* Product Cards Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -336,7 +355,152 @@
             color: white;
         }
 
-        /* Testimonials Section (6 Reviews: 3 & 3 Layout) */
+        /* Slide-out Cart Drawer */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: none;
+        }
+
+        .cart-overlay.active {
+            display: block;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--bg-card);
+            border-left: 1px solid var(--border-color);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+        }
+
+        .cart-drawer.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cart-header h3 {
+            font-family: var(--font-cloister);
+            font-size: 2.2rem;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: var(--bg-input);
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .cart-item-price {
+            color: var(--accent-red);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cart-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .checkout-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-stripe {
+            background: #635bff;
+            color: white;
+        }
+
+        .btn-square {
+            background: #006aff;
+            color: white;
+        }
+
+        /* Testimonials Section */
         .testimonials-section {
             background: #0e0e12;
             border-top: 1px solid var(--border-color);
@@ -387,12 +551,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-red);
         }
 
         .testimonial-stars {
@@ -537,18 +695,6 @@
             animation: fadein 0.5s, fadeout 0.5s 2.5s;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
         @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
     </style>
@@ -564,145 +710,86 @@
     <!-- Header -->
     <header>
         <div class="header-main">
-            <a href="#" class="logo">Classified <span>Tattoo</span> Supply</a>
+            <div class="logo" onclick="filterCategory('all')">Classified <span>Tattoo</span> Supply</div>
             
             <div class="search-container">
-                <input type="text" placeholder="Search machines, needles, inks, aftercare...">
+                <input type="text" id="searchInput" placeholder="Search machines, needles, inks, aftercare..." oninput="handleSearch()">
                 <button>Search</button>
             </div>
 
             <div class="header-actions">
                 <div>👤 Account</div>
-                <div>🛒 Cart (0)</div>
+                <button class="cart-btn" onclick="toggleCart()">
+                    🛒 Cart <span class="cart-badge" id="cartCount">0</span>
+                </button>
             </div>
         </div>
 
-        <!-- Navigation Links -->
+        <!-- Navigation Links (Dynamic Category Filters) -->
         <ul class="nav-categories">
-            <li><a href="#machines">Tattoo Machines</a></li>
-            <li><a href="#needles">Needles & Cartridges</a></li>
-            <li><a href="#ink">Tattoo Inks</a></li>
-            <li><a href="#prep">Prep Products</a></li>
-            <li><a href="#aftercare">Aftercare</a></li>
-            <li><a href="#reviews">Artist Reviews</a></li>
-            <li><a href="#hours">Shop Hours</a></li>
+            <li><button class="nav-btn active" onclick="filterCategory('all')">All Items</button></li>
+            <li><button class="nav-btn" onclick="filterCategory('machines')">Tattoo Machines</button></li>
+            <li><button class="nav-btn" onclick="filterCategory('needles')">Needles & Cartridges</button></li>
+            <li><button class="nav-btn" onclick="filterCategory('ink')">Tattoo Inks</button></li>
+            <li><button class="nav-btn" onclick="filterCategory('prep')">Prep Products</button></li>
+            <li><button class="nav-btn" onclick="filterCategory('aftercare')">Aftercare</button></li>
+            <li><button class="nav-btn" onclick="scrollToSection('reviews')">Artist Reviews</button></li>
+            <li><button class="nav-btn" onclick="scrollToSection('hours')">Shop Hours</button></li>
         </ul>
     </header>
 
     <!-- Hero Banner -->
-    <section class="hero">
+    <section class="hero" id="heroSection">
         <div class="hero-content">
             <h2>Quality Supplies & Great Prices</h2>
             <h1>Shop Open Hours</h1>
             <p>Serving professional artists across Riverside. Premium cartridges, rotary machines, rich black inks, and shop supplies.</p>
-            <a href="#products" class="btn-red">Shop Inventory</a>
+            <button class="btn-red" onclick="filterCategory('all')">Shop Inventory</button>
         </div>
     </section>
 
     <!-- Category Highlights Section -->
-    <section class="section" id="categories">
+    <section class="section" id="categoriesSection">
         <div class="section-title">
             <span>Shop By Category</span>
         </div>
 
         <div class="category-grid">
-            <a href="#products" class="cat-card">
+            <div class="cat-card" onclick="filterCategory('machines')">
                 <div class="cat-icon">⚡</div>
                 <span>Machines</span>
-            </a>
-            <a href="#products" class="cat-card">
+            </div>
+            <div class="cat-card" onclick="filterCategory('needles')">
                 <div class="cat-icon">💉</div>
                 <span>Needles</span>
-            </a>
-            <a href="#products" class="cat-card">
+            </div>
+            <div class="cat-card" onclick="filterCategory('ink')">
                 <div class="cat-icon">🎨</div>
                 <span>Ink & Sets</span>
-            </a>
-            <a href="#products" class="cat-card">
+            </div>
+            <div class="cat-card" onclick="filterCategory('prep')">
                 <div class="cat-icon">🧼</div>
                 <span>Prep Products</span>
-            </a>
-            <a href="#products" class="cat-card">
+            </div>
+            <div class="cat-card" onclick="filterCategory('aftercare')">
                 <div class="cat-icon">🩹</div>
                 <span>Aftercare</span>
-            </a>
-            <a href="#products" class="cat-card">
+            </div>
+            <div class="cat-card" onclick="filterCategory('sanitation')">
                 <div class="cat-icon">🧴</div>
                 <span>Sanitation</span>
-            </a>
-            <a href="#reviews" class="cat-card">
-                <div class="cat-icon">⭐</div>
-                <span>Reviews</span>
-            </a>
+            </div>
         </div>
     </section>
 
-    <!-- FEATURED INVENTORY SECTION -->
+    <!-- DYNAMIC INVENTORY SECTION -->
     <section class="section" id="products">
         <div class="section-title">
-            <span>Featured Inventory</span>
+            <span id="categoryTitle">Featured Inventory</span>
         </div>
 
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?q=80&w=600&auto=format&fit=crop" alt="Rotary Tattoo Machine" class="product-img">
-                <div>
-                    <div class="product-tag">Tattoo Machines</div>
-                    <div class="product-title">Pro Wireless Rotary Pen Machine</div>
-                    <div class="product-price">$189.99</div>
-                </div>
-                <button class="btn-add-cart" onclick="showToast('Pro Wireless Rotary Pen Machine added to cart!')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?q=80&w=600&auto=format&fit=crop" alt="Needle Cartridges" class="product-img">
-                <div>
-                    <div class="product-tag">Needles</div>
-                    <div class="product-title">Pro Round Liner Cartridges (Box of 20)</div>
-                    <div class="product-price">$32.00</div>
-                </div>
-                <button class="btn-add-cart" onclick="showToast('Pro Round Liner Cartridges added to cart!')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?q=80&w=600&auto=format&fit=crop" alt="Tattoo Ink" class="product-img">
-                <div>
-                    <div class="product-tag">Tattoo Inks</div>
-                    <div class="product-title">Dynamic Outlining Black Ink (8oz)</div>
-                    <div class="product-price">$24.99</div>
-                </div>
-                <button class="btn-add-cart" onclick="showToast('Dynamic Outlining Black Ink added to cart!')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=600&auto=format&fit=crop" alt="Tattoo Aftercare" class="product-img">
-                <div>
-                    <div class="product-tag">Aftercare</div>
-                    <div class="product-title">Tattoo Butter & Glide (8oz)</div>
-                    <div class="product-price">$18.50</div>
-                </div>
-                <button class="btn-add-cart" onclick="showToast('Tattoo Butter & Glide added to cart!')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop" alt="Medical Sanitation" class="product-img">
-                <div>
-                    <div class="product-tag">Sanitation</div>
-                    <div class="product-title">Black Nitrile Gloves (Box of 100)</div>
-                    <div class="product-price">$15.99</div>
-                </div>
-                <button class="btn-add-cart" onclick="showToast('Black Nitrile Gloves added to cart!')">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=600&auto=format&fit=crop" alt="Stencil Products" class="product-img">
-                <div>
-                    <div class="product-tag">Prep Products</div>
-                    <div class="product-title">Professional Stencil Transfer Gel (8oz)</div>
-                    <div class="product-price">$21.50</div>
-                </div>
-                <button class="btn-add-cart" onclick="showToast('Professional Stencil Gel added to cart!')">Add to Cart</button>
-            </div>
+        <div class="product-grid" id="productGrid">
+            <!-- Products rendered dynamically via JavaScript -->
         </div>
     </section>
 
@@ -756,48 +843,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="testimonial-card">
-                <div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-quote">"Their stencil gel and glide products are unmatched. Honest staff who always give great recommendations on new rotary pens."</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">DL</div>
-                    <div class="author-info">
-                        <h5>Daniel L.</h5>
-                        <span>Tattoo Artist • Riverside, CA</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-quote">"Saved my studio multiple times when we ran low on medical supplies and gloves mid-week. Always reliable and always in stock."</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">ER</div>
-                    <div class="author-info">
-                        <h5>Elena R.</h5>
-                        <span>Shop Manager • Jurupa Valley, CA</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div>
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-quote">"Top quality gear at real wholesale prices. The 8+ years they've been serving the Inland Empire shows in how they treat local artists."</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">KG</div>
-                    <div class="author-info">
-                        <h5>Kevin G.</h5>
-                        <span>Tattoo Artist • San Bernardino, CA</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -827,19 +872,18 @@
             <div class="footer-col">
                 <h4>Categories</h4>
                 <ul>
-                    <li><a href="#">Tattoo Machines</a></li>
-                    <li><a href="#">Needles & Cartridges</a></li>
-                    <li><a href="#">Inks</a></li>
-                    <li><a href="#">Prep Products</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterCategory('machines')">Tattoo Machines</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterCategory('needles')">Needles & Cartridges</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterCategory('ink')">Inks</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterCategory('prep')">Prep Products</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Information</h4>
                 <ul>
-                    <li><a href="#">Store Location</a></li>
-                    <li><a href="#">Shop Hours</a></li>
+                    <li><a href="#hours">Store Location</a></li>
+                    <li><a href="#hours">Shop Hours</a></li>
                     <li><a href="#reviews">Artist Reviews</a></li>
-                    <li><a href="#">Contact Support</a></li>
                 </ul>
             </div>
         </div>
@@ -848,10 +892,174 @@
         </div>
     </footer>
 
+    <!-- CART DRAWER & OVERLAY -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="cart-close" onclick="toggleCart()">✕</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items render dynamically -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <div class="checkout-methods">
+                <button class="btn-checkout btn-stripe" onclick="processCheckout('Stripe')">Checkout with Stripe</button>
+                <button class="btn-checkout btn-square" onclick="processCheckout('Square')">Checkout with Square</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Interactive Toast Popup -->
     <div id="toast">Item added to cart!</div>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
+        // Inventory Data Array
+        const products = [
+            { id: 1, name: "Pro Wireless Rotary Pen Machine", category: "machines", price: 189.99, image: "https://images.unsplash.com/photo-1562962230-16e4623d36e6?q=80&w=600&auto=format&fit=crop" },
+            { id: 2, name: "Pro Round Liner Cartridges (Box of 20)", category: "needles", price: 32.00, image: "https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?q=80&w=600&auto=format&fit=crop" },
+            { id: 3, name: "Dynamic Outlining Black Ink (8oz)", category: "ink", price: 24.99, image: "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?q=80&w=600&auto=format&fit=crop" },
+            { id: 4, name: "Tattoo Butter & Glide (8oz)", category: "aftercare", price: 18.50, image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=600&auto=format&fit=crop" },
+            { id: 5, name: "Black Nitrile Gloves (Box of 100)", category: "sanitation", price: 15.99, image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop" },
+            { id: 6, name: "Professional Stencil Transfer Gel (8oz)", category: "prep", price: 21.50, image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=600&auto=format&fit=crop" }
+        ];
+
+        let cart = [];
+
+        // Initial Load
+        window.onload = function() {
+            renderProducts(products);
+        };
+
+        // Render Product Grid
+        function renderProducts(items) {
+            const grid = document.getElementById("productGrid");
+            grid.innerHTML = "";
+
+            if (items.length === 0) {
+                grid.innerHTML = "<p style='color: var(--text-muted); grid-column: 1/-1;'>No products found matching your request.</p>";
+                return;
+            }
+
+            items.forEach(product => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-img">
+                    <div>
+                        <div class="product-tag">${product.category}</div>
+                        <div class="product-title">${product.name}</div>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Category Filter Function
+        function filterCategory(category) {
+            const categoryTitle = document.getElementById("categoryTitle");
+            
+            // Update Active Nav Buttons
+            document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
+
+            if (category === "all") {
+                categoryTitle.innerText = "All Inventory";
+                renderProducts(products);
+            } else {
+                categoryTitle.innerText = category.toUpperCase() + " COLLECTION";
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+
+            scrollToSection("products");
+        }
+
+        // Search Input Filter
+        function handleSearch() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+            document.getElementById("categoryTitle").innerText = `Search Results (${filtered.length})`;
+            renderProducts(filtered);
+            scrollToSection("products");
+        }
+
+        // Scroll to Specific Page Sections
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Cart Drawer Toggle
+        function toggleCart() {
+            document.getElementById("cartOverlay").classList.toggle("active");
+            document.getElementById("cartDrawer").classList.toggle("active");
+        }
+
+        // Add Product to Cart
+        function addToCart(productId) {
+            const item = products.find(p => p.id === productId);
+            cart.push(item);
+            updateCart();
+            showToast(`${item.name} added to cart!`);
+        }
+
+        // Remove Item from Cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Update Cart Drawer UI & Calculations
+        function updateCart() {
+            const cartCount = document.getElementById("cartCount");
+            const cartItems = document.getElementById("cartItems");
+            const cartTotal = document.getElementById("cartTotal");
+
+            cartCount.innerText = cart.length;
+            cartItems.innerHTML = "";
+
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = "<p style='color: var(--text-muted); text-align: center; margin-top: 20px;'>Your cart is currently empty.</p>";
+            } else {
+                cart.forEach((item, index) => {
+                    total += item.price;
+                    const itemElement = document.createElement("div");
+                    itemElement.className = "cart-item";
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${index})">✕</button>
+                    `;
+                    cartItems.appendChild(itemElement);
+                });
+            }
+
+            cartTotal.innerText = `$${total.toFixed(2)}`;
+        }
+
+        // Simulated Checkout Integration
+        function processCheckout(gateway) {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Add items before checking out!");
+                return;
+            }
+            alert(`Redirecting to ${gateway} Checkout Gateway...\nTotal Amount: ${document.getElementById("cartTotal").innerText}`);
+        }
+
+        // Toast Notification Function
         function showToast(message) {
             var toast = document.getElementById("toast");
             toast.innerText = message;
