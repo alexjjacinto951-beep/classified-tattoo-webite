@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classified Tattoo Supply | Riverside, CA</title>
-    <!-- Google Fonts matching the exact flyer typography -->
+    <!-- Google Fonts: UnifrakturMaguntia, Rye, Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Rye&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Rye&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0a0a0c;
@@ -18,8 +18,8 @@
             --text-main: #ffffff;
             --text-muted: #a0a0ab;
             --border-color: #22222a;
-            --font-gothic: 'Pirata One', cursive; /* "OPEN HOURS" style */
-            --font-serif: 'Rye', serif;           /* "CLASSIFIED" / "SHOP WILL BE" style */
+            --font-oldenglish: 'UnifrakturMaguntia', cursive; /* Matches image exact style */
+            --font-serif: 'Rye', serif;
             --font-body: 'Inter', sans-serif;
         }
 
@@ -84,12 +84,12 @@
         }
 
         .logo {
-            font-family: var(--font-serif);
-            font-size: 2rem;
+            font-family: var(--font-oldenglish);
+            font-size: 2.6rem;
             color: var(--text-main);
             text-decoration: none;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1;
         }
 
         .logo span {
@@ -173,22 +173,21 @@
 
         .hero h2 {
             font-family: var(--font-serif);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--text-main);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         .hero h1 {
-            font-family: var(--font-gothic);
-            font-size: 4.8rem;
+            font-family: var(--font-oldenglish);
+            font-size: 5rem;
             color: var(--accent-red);
-            line-height: 0.95;
+            line-height: 1;
             margin-bottom: 15px;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-shadow: 0 0 20px rgba(200, 16, 46, 0.7);
-            text-transform: uppercase;
         }
 
         .hero p {
@@ -226,15 +225,14 @@
         }
 
         .section-title {
-            font-family: var(--font-gothic);
-            font-size: 3.2rem;
-            letter-spacing: 1.5px;
+            font-family: var(--font-oldenglish);
+            font-size: 3.4rem;
+            letter-spacing: 1px;
             color: var(--text-main);
             margin-bottom: 25px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            text-transform: uppercase;
         }
 
         /* Categories Grid */
@@ -363,10 +361,9 @@
         .info-item h4 {
             color: var(--accent-red);
             margin-bottom: 5px;
-            font-size: 1.6rem;
-            font-family: var(--font-gothic);
+            font-size: 2rem;
+            font-family: var(--font-oldenglish);
             letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
         .info-item p {
@@ -395,10 +392,9 @@
         .footer-col h4 {
             color: var(--text-main);
             margin-bottom: 15px;
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
+            font-family: var(--font-oldenglish);
+            font-size: 1.8rem;
             letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
         .footer-col ul {
@@ -507,7 +503,7 @@
     <!-- Animated Hero Banner -->
     <section class="hero">
         <div class="hero-content">
-            <h2>Quality Supplies. Great Prices. Always.</h2>
+            <h2>Quality Supplies & Great Prices</h2>
             <h1>Shop Open Hours</h1>
             <p>Serving professional artists across Riverside. Premium cartridges, rotary machines, rich black inks, and shop supplies.</p>
             <a href="#categories" class="btn-red">Shop Inventory</a>
