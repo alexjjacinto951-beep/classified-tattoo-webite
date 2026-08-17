@@ -462,16 +462,37 @@
 
         .cart-footer {
             border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-            margin-top: 20px;
+            padding-top: 15px;
+            margin-top: 15px;
         }
 
-        .cart-total {
+        .cart-line-item {
             display: flex;
             justify-content: space-between;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .cart-line-item span:last-child {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25rem;
             font-weight: 700;
+            color: var(--text-main);
+            margin-top: 10px;
             margin-bottom: 15px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .cart-total-row span:last-child {
+            color: var(--accent-red);
         }
 
         .checkout-methods {
@@ -725,7 +746,7 @@
             </div>
         </div>
 
-        <!-- Navigation Links (Dynamic Category Filters) -->
+        <!-- Navigation Links -->
         <ul class="nav-categories">
             <li><button class="nav-btn active" onclick="filterCategory('all')">All Items</button></li>
             <li><button class="nav-btn" onclick="filterCategory('machines')">Tattoo Machines</button></li>
@@ -892,7 +913,7 @@
         </div>
     </footer>
 
-    <!-- CART DRAWER & OVERLAY -->
+    <!-- CART DRAWER & OVERLAY WITH 7% TAX BREAKDOWN -->
     <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
@@ -905,7 +926,15 @@
         </div>
 
         <div class="cart-footer">
-            <div class="cart-total">
+            <div class="cart-line-item">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">$0.00</span>
+            </div>
+            <div class="cart-line-item">
+                <span>Estimated CA Tax (7%):</span>
+                <span id="cartTax">$0.00</span>
+            </div>
+            <div class="cart-total-row">
                 <span>Total:</span>
                 <span id="cartTotal">$0.00</span>
             </div>
@@ -921,6 +950,8 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        const CA_TAX_RATE = 0.07; // 7% California Tax Rate
+
         // Inventory Data Array
         const products = [
             { id: 1, name: "Pro Wireless Rotary Pen Machine", category: "machines", price: 189.99, image: "https://images.unsplash.com/photo-1562962230-16e4623d36e6?q=80&w=600&auto=format&fit=crop" },
@@ -933,12 +964,10 @@
 
         let cart = [];
 
-        // Initial Load
         window.onload = function() {
             renderProducts(products);
         };
 
-        // Render Product Grid
         function renderProducts(items) {
             const grid = document.getElementById("productGrid");
             grid.innerHTML = "";
@@ -964,11 +993,8 @@
             });
         }
 
-        // Category Filter Function
         function filterCategory(category) {
             const categoryTitle = document.getElementById("categoryTitle");
-            
-            // Update Active Nav Buttons
             document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
 
             if (category === "all") {
@@ -983,7 +1009,6 @@
             scrollToSection("products");
         }
 
-        // Search Input Filter
         function handleSearch() {
             const query = document.getElementById("searchInput").value.toLowerCase();
             const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
@@ -992,18 +1017,15 @@
             scrollToSection("products");
         }
 
-        // Scroll to Specific Page Sections
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Cart Drawer Toggle
         function toggleCart() {
             document.getElementById("cartOverlay").classList.toggle("active");
             document.getElementById("cartDrawer").classList.toggle("active");
         }
 
-        // Add Product to Cart
         function addToCart(productId) {
             const item = products.find(p => p.id === productId);
             cart.push(item);
@@ -1011,55 +1033,66 @@
             showToast(`${item.name} added to cart!`);
         }
 
-        // Remove Item from Cart
         function removeFromCart(index) {
             cart.splice(index, 1);
             updateCart();
         }
 
-        // Update Cart Drawer UI & Calculations
         function updateCart() {
             const cartCount = document.getElementById("cartCount");
             const cartItems = document.getElementById("cartItems");
+            const cartSubtotal = document.getElementById("cartSubtotal");
+            const cartTax = document.getElementById("cartTax");
             const cartTotal = document.getElementById("cartTotal");
 
             cartCount.innerText = cart.length;
             cartItems.innerHTML = "";
 
-            let total = 0;
+            let subtotal = 0;
 
             if (cart.length === 0) {
                 cartItems.innerHTML = "<p style='color: var(--text-muted); text-align: center; margin-top: 20px;'>Your cart is currently empty.</p>";
-            } else {
-                cart.forEach((item, index) => {
-                    total += item.price;
-                    const itemElement = document.createElement("div");
-                    itemElement.className = "cart-item";
-                    itemElement.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}">
-                        <div class="cart-item-details">
-                            <div class="cart-item-title">${item.name}</div>
-                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                        </div>
-                        <button class="cart-item-remove" onclick="removeFromCart(${index})">✕</button>
-                    `;
-                    cartItems.appendChild(itemElement);
-                });
+                cartSubtotal.innerText = "$0.00";
+                cartTax.innerText = "$0.00";
+                cartTotal.innerText = "$0.00";
+                return;
             }
 
+            cart.forEach((item, index) => {
+                subtotal += item.price;
+                const itemElement = document.createElement("div");
+                itemElement.className = "cart-item";
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                    </div>
+                    <button class="cart-item-remove" onclick="removeFromCart(${index})">✕</button>
+                `;
+                cartItems.appendChild(itemElement);
+            });
+
+            const tax = subtotal * CA_TAX_RATE;
+            const total = subtotal + tax;
+
+            cartSubtotal.innerText = `$${subtotal.toFixed(2)}`;
+            cartTax.innerText = `$${tax.toFixed(2)}`;
             cartTotal.innerText = `$${total.toFixed(2)}`;
         }
 
-        // Simulated Checkout Integration
         function processCheckout(gateway) {
             if (cart.length === 0) {
                 alert("Your cart is empty. Add items before checking out!");
                 return;
             }
-            alert(`Redirecting to ${gateway} Checkout Gateway...\nTotal Amount: ${document.getElementById("cartTotal").innerText}`);
+            const subtotal = document.getElementById("cartSubtotal").innerText;
+            const tax = document.getElementById("cartTax").innerText;
+            const total = document.getElementById("cartTotal").innerText;
+            
+            alert(`Redirecting to ${gateway} Checkout Gateway...\n\nSubtotal: ${subtotal}\nEstimated CA Tax (7%): ${tax}\nTotal Amount Due: ${total}`);
         }
 
-        // Toast Notification Function
         function showToast(message) {
             var toast = document.getElementById("toast");
             toast.innerText = message;
